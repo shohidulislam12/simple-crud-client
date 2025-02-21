@@ -18,10 +18,10 @@ Additionally, the application uses JWT-based authentication and authorization to
 
 ## Live Links
 
-- **Live App:** [https://your-live-app-link.com](https://your-live-app-link.com)
+- **Live App:** [https://dragon-newss-36f1c.web.app/](https://dragon-newss-36f1c.web.app/)
 - **GitHub Repository:**  
-  - [Frontend Repository](https://github.com/yourusername/simple-crud-frontend)
-  - [Backend Repository](https://github.com/yourusername/simple-crud-backend)
+  - [Frontend Repository](https://github.com/shohidulislam12/simple-crud-client)
+  - [Backend Repository](https://github.com/shohidulislam12/simple-crud-sever)
 
 ## Dependencies
 
@@ -53,15 +53,12 @@ Additionally, the application uses JWT-based authentication and authorization to
 
 ### Prerequisites
 
-- Node.js (v14 or above recommended)
-- npm or yarn
-- A MongoDB instance (local or Atlas)
 
 ### Frontend Setup
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/simple-crud-frontend.git
+   git clone https://github.com/shohidulislam12/simple-crud-client
    cd simple-crud-frontend
    ```
 
@@ -77,7 +74,7 @@ Additionally, the application uses JWT-based authentication and authorization to
 3. **Configure Environment Variables:**
    Create a `.env` file in the project root and add:
    ```
-   VITE_BASE_URL=http://localhost:5000
+   VITE_BASE_URL=http://localhost:3000
    ```
    (Adjust the URL to your backend if necessary.)
 
@@ -96,7 +93,7 @@ Additionally, the application uses JWT-based authentication and authorization to
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/simple-crud-backend.git
+   git clone https://github.com/shohidulislam12/simple-crud-sever
    cd simple-crud-backend
    ```
 
@@ -128,18 +125,12 @@ Additionally, the application uses JWT-based authentication and authorization to
    ```
 
 ## API Endpoints
-
-- **User Authentication:**
-  - `POST /auth/register` – Register a new user.
-  - `POST /auth/login` – Authenticate user and return JWT.
 - **Admin CRUD for Cards (Records):**
   - `POST /records` – Create a new record.
   - `GET /records` – Get all records.
   - `GET /records/:id` – Get a specific record.
   - `PUT /records/:id` – Update a record.
   - `DELETE /records/:id` – Delete a record.
-- **User Search:**
-  - `GET /user?roll=xxx&year=yyy` – Retrieve user information based on roll number and passing year.
 
 ## Technologies Used
 
@@ -169,11 +160,3 @@ Additionally, the application uses JWT-based authentication and authorization to
 ## Contributing
 
 Contributions are welcome! Please fork the repository, create a feature branch, and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-This README file covers all key aspects of your project, including a short description, live links, dependencies, installation steps, API endpoints, technologies used, and key features. Customize any section as needed to better fit your project’s specifics.
