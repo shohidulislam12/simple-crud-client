@@ -46,7 +46,7 @@ if(loading){
         <a className=" font-bold text-xl">NU Education</a>
       </div>
       <div className="flex-none">
-      {user?.email && <p>Welcome {"  "}{user.email.split('@')[0]}</p>}
+      {user?.email && <p className="hidden  md:flex">Welcome {"  "}{user.email.split('@')[0]}</p>}
       {  user?.email? <button className="border p-1 border-blue-500" onClick={handleLogout}>Logout</button>:<Link to='/login' className="border p-1 border-blue-500" >LogIn</Link>}
       <Link to='/' className="border p-1 border-blue-500" >Home </Link>
   
