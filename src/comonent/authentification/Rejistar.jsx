@@ -40,7 +40,7 @@ const Rejistar = () => {
   };
 
   return (
-    <div className="max-w-screen-lg dark:bg-[#420878] dark:text-white flex md:flex-row flex-col cards mx-auto p-5 bg-purple-300 min-h-screen items-center justify-center">
+    <div className="max-w-screen-lg dark:bg-[#420878] dark:text-white flex md:flex-row flex-col cards mx-auto p-5 bg-purple-300  items-center justify-center">
       <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
           Register

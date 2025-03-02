@@ -43,7 +43,7 @@ console.log(records)
 
 
   return (
-    <div className="max-w-screen-lg dark:bg-[#420878] dark:text-white   mx-auto p-5 bg-purple-300 min-h-screen">
+    <div className="max-w-screen-lg dark:bg-[#420878] dark:text-white   mx-auto p-5 bg-purple-300 ">
         <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold mb-4">Admin Dashbord </h2>  <NavLink to='/adddata'
                

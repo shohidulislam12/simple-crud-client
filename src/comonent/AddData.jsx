@@ -55,7 +55,7 @@ const AddData = () => {
   };
 
   return (
-    <div className="max-w-screen-lg dark:bg-[#420878] dark:text-gray-500  mx-auto p-5 bg-purple-300 min-h-screen">
+    <div className="max-w-screen-lg dark:bg-[#420878] dark:text-gray-500  mx-auto p-5 bg-purple-300 ">
        <div className="flex justify-between items-center">
    <h2 className="text-2xl font-bold dark:text-white mb-4">Add Record Record</h2>  <NavLink to='/admindashbord'
           
@@ -150,7 +150,7 @@ const AddData = () => {
             name="session"
             value={formData.session}
             onChange={handleChange}
-            className="input dark:text-white  input-bordered w-full"
+            className="input   input-bordered w-full"
             required
           />
         </div>
@@ -161,14 +161,14 @@ const AddData = () => {
             name="passingYear"
             value={formData.passingYear}
             onChange={handleChange}
-            className="input dark:text-white  input-bordered w-full"
+            className="input  input-bordered w-full"
             required
           />
         </div>
         <div>
           <label className="block dark:text-white  text-sm font-medium text-gray-700">CGPA:</label>
           <input
-            type="text"
+            type="number"
             name="cgpa"
             value={formData.cgpa}
             onChange={handleChange}
