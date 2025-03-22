@@ -43,7 +43,7 @@ if(loading){
   return (
     <div className="navbar dark:bg-black dark:text-[#eae9fc] bg-[#dedcff]">
       <div className="flex-1">
-        <a className=" font-bold text-xl">NU Education</a>
+        <a className=" font-bold text-xl">Blog Post</a>
       </div>
       <div className="flex-none">
       {user?.email && <p className="hidden  md:flex">Welcome {"  "}{user.email.split('@')[0]}</p>}

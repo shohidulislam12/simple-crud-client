@@ -8,6 +8,9 @@ const Home = () => {
     return (
         <div className="max-w-screen-lg mx-auto">
              <Navbar></Navbar>
+             <section>
+                
+             </section>
              <Outlet></Outlet>
              <Footer></Footer>
              <ToastContainer />

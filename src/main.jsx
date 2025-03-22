@@ -13,6 +13,7 @@ import Admin from './comonent/Admin';
 import AddData from './comonent/AddData';
 import EditData from './comonent/EditData';
 import UserDasbord from './comonent/UserDasbord';
+import BlogData from './comonent/BlogData';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
       path: "/edit/:id",
       element:<EditData></EditData>
+    },
+      {
+      path: "/blog/:id",
+      element:<BlogData></BlogData>
     },
     
   ]

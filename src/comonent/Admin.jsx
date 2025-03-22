@@ -1,116 +1,78 @@
-
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-import { Link, Navigate, NavLink } from "react-router-dom";
-
+import { Link, NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const Admin = () => {
-  const [records, setRecords] = useState([]);
-  const [editRecord, setEditRecord] = useState(null);
+  const [blogs, setBlogs] = useState([]);
+
   useEffect(() => {
-    fetchRecords();
+    fetchBlogs();
   }, []);
 
-  // Fetch records from the backend
-  const fetchRecords = async () => {
+  const fetchBlogs = async () => {
     try {
-      // Replace with your actual backend API endpoint
-      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/records`);
-      setRecords(response.data);
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/blogs`);
+      setBlogs(response.data);
     } catch (error) {
-      console.error("Error fetching records:", error);
+      console.error("Error fetching blogs:", error);
     }
   };
-console.log(records)
-  const handleEdit = (record) => {
 
-  };
-
-  // Delete a record
   const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this blog?")) return;
     try {
-
-        console.log(id)
-      // Replace with your actual backend API endpoint
-      await axios.delete(`${import.meta.env.VITE_BASE_URL}/records/${id}`);
-      // Update UI
-      setRecords(records.filter((item) => item._id !== id));
+      await axios.delete(`${import.meta.env.VITE_BASE_URL}/blogs/${id}`);
+      setBlogs(blogs.filter((blog) => blog._id !== id));
+      toast.success("Blog deleted successfully");
     } catch (error) {
-      console.error("Error deleting record:", error);
+      console.error("Error deleting blog:", error);
+      toast.error("Failed to delete blog");
     }
   };
-
 
   return (
-    <div className="max-w-screen-lg dark:bg-[#420878] dark:text-white   mx-auto p-5 bg-purple-300 ">
-        <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold mb-4">Admin Dashbord </h2>  <NavLink to='/adddata'
-               
-               className="bg-blue-500 text-white px-4 py-2 rounded"
-             >
-              Add Data
-             </NavLink>
-        </div>
+    <div className="max-w-screen-lg mx-auto p-5 dark:bg-gray-900 dark:text-white bg-gray-100">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold">Admin Dashboard - Blog Management</h2>
+        <NavLink to="/adddata" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          Add New Blog
+        </NavLink>
+      </div>
 
-      {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="table w-full">
-          {/* Table Head */}
-          <thead>
-            <tr className="dark:text-white">
-              <th>Name</th>
-              <th>NID/Birth Certificate</th>
-              <th>Date of Birth</th>
-              <th>Father's Name</th>
-              <th>Mother's Name</th>
-              <th>Roll Number</th>
-              <th>Program</th>
-              <th>Session</th>
-              <th>Passing Year</th>
-              <th>CGPA</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          {/* Table Body */}
-          <tbody>
-            {records.map((record) => (
-              <tr key={record._id}>
-                <td>{record.name}</td>
-                <td>{record.nid}</td>
-                <td>{record.dob}</td>
-                <td>{record.fatherName}</td>
-                <td>{record.motherName}</td>
-                <td>{record.rollNumber}</td>
-                <td>{record.program}</td>
-                <td>{record.session}</td>
-                <td>{record.passingYear}</td>
-                <td>{record.cgpa}</td>
-                <td >
-                  <Link to={`/edit/${record._id}`}
-                    className="bg-blue-500 text-white px-4  rounded"
-                    onClick={() => handleEdit(record)}
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    className="bg-blue-500 text-white px-4    rounded"
-                    onClick={() => handleDelete(record._id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-            {records.length === 0 && (
-              <tr>
-                <td colSpan="11" className="text-center py-4">
-                  No records found.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {blogs.length > 0 ? (
+          blogs.map((blog) => (
+            <motion.div
+              key={blog._id}
+              className="bg-white flex flex-col jus dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden p-4"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">{blog.title}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                {blog.content.length > 100 ? `${blog.content.substring(0, 100)}...` : blog.content}
+              </p>
+              <p className="text-sm text-gray-500 mt-2">By {blog.author} - {new Date(blog.createdAt).toLocaleDateString()}</p>
+
+              <div className="flex justify-between items-center mt-4">
+                <Link to={`/edit/${blog._id}`} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                  Edit
+                </Link>
+                <button
+                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                  onClick={() => handleDelete(blog._id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </motion.div>
+          ))
+        ) : (
+          <p className="text-center col-span-3 text-gray-600 dark:text-gray-400">No blog posts found.</p>
+        )}
       </div>
     </div>
   );
